@@ -11,7 +11,7 @@ import com.imooc.core.net.callback.IError;
 import com.imooc.core.net.callback.IFailure;
 import com.imooc.core.net.callback.ISuccess;
 
-/**测试Activity
+/**测试Fragment
  * Created by Administrator on 2017/9/5.
  */
 

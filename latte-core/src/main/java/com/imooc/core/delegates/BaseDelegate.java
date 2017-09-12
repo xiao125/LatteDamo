@@ -26,12 +26,12 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 public  abstract class BaseDelegate extends Fragment implements ISupportFragment {
 
-  private final SupportFragmentDelegate DELEGATE = new SupportFragmentDelegate(this);
-  protected FragmentActivity mActivity = null;
+  private final SupportFragmentDelegate DELEGATE = new SupportFragmentDelegate(this); //顶层Fragment
+  protected FragmentActivity mActivity = null; //Fragment当前页面的上下文
 
     //忽略拼写错误
     @SuppressWarnings("SpellCheckingInspection")
-    private Unbinder mUnbinder = null;
+    private Unbinder mUnbinder = null;   //ButterKnife
 
   public abstract  Object setLayout();
 
@@ -73,8 +73,7 @@ public  abstract class BaseDelegate extends Fragment implements ISupportFragment
 
     if (setLayout() instanceof Integer){
 
-      rootView = inflater.inflate((Integer) setLayout(),container,false);
-
+      rootView = inflater.inflate((Integer) setLayout(),container,false); //view
 
     }else if (setLayout() instanceof View){
 

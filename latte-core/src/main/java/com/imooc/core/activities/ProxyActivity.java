@@ -14,6 +14,7 @@ import me.yokeyword.fragmentation.SupportActivityDelegate;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
 /**
+ * app全局的Activity
  * Created by Administrator on 2017/9/4.
  */
 
@@ -21,7 +22,7 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
 
     private final SupportActivityDelegate DELEGATE = new SupportActivityDelegate(this);
 
-    public abstract LatteDelegate setRootDelegate();
+    public abstract LatteDelegate setRootDelegate(); //Fragment的关键方法
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,11 +36,12 @@ public abstract class ProxyActivity extends AppCompatActivity implements ISuppor
 
     private void initContainer(@Nullable Bundle savedInstanceState){
 
+        //Acvtivity中显示Fragment页面
         final ContentFrameLayout container = new ContentFrameLayout(this);
         container.setId(R.id.delegate_container); //设置独有的id，自定义的id
         setContentView(container);
 
-        if (savedInstanceState ==null){
+        if (savedInstanceState ==null){ //没有保存数据，直接加载页面
 
             DELEGATE.loadRootFragment(R.id.delegate_container,setRootDelegate());
         }
