@@ -1,4 +1,4 @@
-package com.flj.latte.ui;
+package com.latte.ui;
 
 import org.junit.Test;
 

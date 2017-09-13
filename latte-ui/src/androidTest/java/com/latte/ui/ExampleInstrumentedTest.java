@@ -1,4 +1,4 @@
-package com.flj.latte.ui;
+package com.latte.ui;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.flj.latte.ui.test", appContext.getPackageName());
+        assertEquals("com.latte.ui.test", appContext.getPackageName());
     }
 }
