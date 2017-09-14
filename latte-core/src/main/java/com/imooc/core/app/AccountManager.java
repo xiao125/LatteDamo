@@ -22,6 +22,7 @@ public class AccountManager {
         return LattePreference.getAppFlag(SignTag.SIGN_TAG.name());
     }
 
+    //判断是否登录
     public static void checkAccount(IUserChecker checker){
 
         if (isSignIn()){

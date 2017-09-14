@@ -1,8 +1,6 @@
 package com.flj.latte.ec.launcher;
 
-import android.accounts.AccountManager;
 import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -122,7 +120,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
         if (!LattePreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())){
 
             //开始引导页界面
-            getSupportDelegate().start(new LauncherDelegate(),SINGLETASK);
+            getSupportDelegate().start(new LauncherScrollDelegate(),SINGLETASK);
 
         }else {
 
@@ -131,7 +129,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
                 @Override
                 public void onSignIn() {
                     if (mILauncherListener !=null){
-                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED);
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.SIGNED); //登录了
                     }
                 }
 
@@ -139,7 +137,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
                 public void onNotSignIn() {
 
                     if (mILauncherListener !=null){
-                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED);
+                        mILauncherListener.onLauncherFinish(OnLauncherFinishTag.NOT_SIGNED); //没有登录
                     }
                 }
             });
