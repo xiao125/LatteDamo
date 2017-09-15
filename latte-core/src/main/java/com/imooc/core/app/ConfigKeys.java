@@ -13,7 +13,7 @@ public enum ConfigKeys {
     LOADER_DELAYED,//下载
     INTERCEPTOR,//拦截器
     WE_CHAT_APP_ID, //微信appid
-    WE_CHAT_APP_SECRET,
+    WE_CHAT_APP_SECRET,//微信app_secret
     ACTIVITY,
     HANDLER,
     JAVASCRIPT_INTERFACE
