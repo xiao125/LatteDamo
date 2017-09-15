@@ -1,3 +1,11 @@
+.gradle  
+/local.properties  
+/.idea/workspace.xml  
+/.idea/libraries  
+.DS_Store  
+/build  
+/captures 
+
 # Built application files
 *.apk
 *.ap_
@@ -53,13 +61,6 @@ google-services.json
 freeline.py
 freeline/
 freeline_project_description.json
-.gradle  
-/local.properties  
-/.idea/workspace.xml  
-/.idea/libraries  
-.DS_Store  
-/build  
-/captures 
 
 # Others  
 .idea/  
