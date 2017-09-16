@@ -6,7 +6,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * ElementType.TYPE 编译类
+ * ElementType.TYPE
  * Created by Administrator on 2017/9/15 0015.
  */
 

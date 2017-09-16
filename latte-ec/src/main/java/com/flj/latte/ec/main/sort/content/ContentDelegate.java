@@ -1,11 +1,9 @@
-package com.flj.latte.ec.main.content;
+package com.flj.latte.ec.main.sort.content;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 
 import com.imooc.core.delegates.LatteDelegate;
-
-import java.util.List;
 
 /**
  * Created by Administrator on 2017/9/13 0013.

@@ -115,6 +115,12 @@ public  final class Configurator {
         return this;
     }
 
+    public final Configurator withWechatAppSecret(String appSecret){
+        LATTE_CONFIGS.put(ConfigKeys.WE_CHAT_APP_SECRET,appSecret);
+        return this;
+    }
+
+
     public final Configurator withActivity(Activity activity){
         LATTE_CONFIGS.put(ConfigKeys.ACTIVITY,activity);
         return this;

@@ -2,6 +2,7 @@ package com.imooc.lattedamo;
 
 import android.app.Application;
 
+import com.flj.latte.ec.database.DatabaseManager;
 import com.flj.latte.ec.icon.FontEcModule;
 import com.imooc.core.app.Latte;
 import com.imooc.core.net.interceptors.DebugInterceptor;
@@ -24,10 +25,12 @@ public class MyApplication extends Application {
                 .withApiHost("你的本地服务器地址")
                 .withInterceptor(new DebugInterceptor("test",R.raw.test))
                 .withWeChatAppId("你的微信AppKey")
-
+                .withWechatAppSecret("你的微信AppSecret")
                 .configure();
 
 
+        //初始化数据库
+        DatabaseManager.getInstance().init(this);
 
     }
 }
