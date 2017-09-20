@@ -137,20 +137,6 @@ public abstract class WebDelegate extends LatteDelegate implements IWebViewIniti
         }
     }
 
-    @Override
-    public WebView initWebView(WebView webView) {
-        return null;
-    }
-
-    @Override
-    public WebViewClient initWebViewClient() {
-        return null;
-    }
-
-    @Override
-    public WebChromeClient initWebChromeClient() {
-        return null;
-    }
 
 
 
