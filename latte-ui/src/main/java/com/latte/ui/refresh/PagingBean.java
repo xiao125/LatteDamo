@@ -63,7 +63,7 @@ public  final class PagingBean {
         return this;
     }
 
-    PagingBean addIndex(){
+    PagingBean addIndex(){ //第一次加载后，就是下一页了
         mPageIndex++;
         return this;
     }

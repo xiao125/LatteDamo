@@ -16,6 +16,8 @@ import com.bumptech.glide.request.RequestOptions;
 public class ImageHolder implements Holder<String> {
 
     private AppCompatImageView mImageView = null;
+
+    //Glide 全局配置
     private static final RequestOptions BANNER_OPTIONS = new RequestOptions()
             .diskCacheStrategy(DiskCacheStrategy.ALL)
             .dontAnimate()

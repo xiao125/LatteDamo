@@ -7,6 +7,7 @@ import java.lang.ref.SoftReference;
 import java.util.LinkedHashMap;
 
 /**
+ * 数据实体类型
  * Created by Administrator on 2017/9/18 0018.
  */
 

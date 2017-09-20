@@ -26,7 +26,7 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
     private final PagingBean BEAN;//记录当前滑动的位置
     private final RecyclerView RECYCLERVIEW;
     private MultipleRecyclerAdapter mAdapter =null;
-    private final DataConverter CONVERTER;
+    private final DataConverter CONVERTER; //json数据
 
     private RefreshHandler(SwipeRefreshLayout swipeRefreshLayout,
                            RecyclerView recyclerView,
@@ -69,13 +69,13 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
 
                         final JSONObject object = JSON.parseObject(response);
                         BEAN.setTotal(object.getInteger("total"))
-                                .setPageSize(object.getInteger("page_size"));
+                                .setPageSize(object.getInteger("page_size")); //总数据条数
 
                         //设置Adapter
-                        mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData(response));
+                        mAdapter = MultipleRecyclerAdapter.create(CONVERTER.setJsonData(response)); //适配器参数传入返回的json数据
                         mAdapter.setOnLoadMoreListener(RefreshHandler.this,RECYCLERVIEW);
                         RECYCLERVIEW.setAdapter(mAdapter);
-                        BEAN.addIndex();
+                        BEAN.addIndex();  //当前是第几页
 
                     }
                 })
@@ -92,6 +92,7 @@ public class RefreshHandler implements SwipeRefreshLayout.OnRefreshListener,
         final int total = BEAN.getmTotal();
         final int index = BEAN.getmPageIndex();
 
+        //当前适配器的数据条数小于一页显示几条数据，或者当前已经显示了几条数据大于总条数
         if (mAdapter.getData().size() < pageSize || currentCount >= total){ //没有更多了
             mAdapter.loadMoreEnd(true);//,数据全部加载完之后调用
         }else {

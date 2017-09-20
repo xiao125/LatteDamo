@@ -38,7 +38,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
     @BindView(R2.id.icon_index_scan)
     IconTextView mIconScan = null;
     @BindView(R2.id.et_search_view)
-    AppCompatEditText mSearchView = null;
+    AppCompatEditText mSearchView = null;  //搜索框
 
 
     private RefreshHandler mRefreshHandler = null;//下拉刷新回调监听
@@ -57,7 +57,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light
         );
-        mRefreshLayout.setProgressViewOffset(true,120,300);
+        mRefreshLayout.setProgressViewOffset(true,120,300); //SwRefreshLayout 显示的高度
 
     }
 
@@ -80,7 +80,6 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
         super.onLazyInitView(savedInstanceState);
         initRefreshLayout();
         initRecyclerView();
-
         mRefreshHandler.firstPage("index.php");
 
 
@@ -95,10 +94,19 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
         super.onBindView(savedInstanceState, rootView);
-       // mRefreshHandler = RefreshHandler.create(mRefreshLayout,mRecyclerView,new )
+
+        //IndexDataConverter() json数据
+        mRefreshHandler = RefreshHandler.create(mRefreshLayout,mRecyclerView,new IndexDataConverter());
+
+        //二维码
+
+        //搜索框
+        mSearchView.setOnFocusChangeListener(this);
+
 
     }
 
+    //搜索监听回调
     @Override
     public void onFocusChange(View view, boolean hasFocus) {
 

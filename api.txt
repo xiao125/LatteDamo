@@ -1,2 +1,10 @@
 线上数据API：http://116.196.95.67/RestServer/api/
 (后面加上具体的api就可以访问具体的数据了，默认不加访问首页数据)
+首页api：http://116.196.95.67/RestServer/api/index.php
+
+分类api：
+      商品id：http://116.196.95.67/RestServer/api/sort_list.php
+       相应的商品id展示信息： http://116.196.95.67/RestServer/api/sort_content_list.php?contentId=1
+
+
+
