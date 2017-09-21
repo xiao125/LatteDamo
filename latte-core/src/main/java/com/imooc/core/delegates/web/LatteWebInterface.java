@@ -24,11 +24,12 @@ public class LatteWebInterface {
         return new LatteWebInterface(delegate);
     }
 
+    //js与原生交互
     @SuppressWarnings("unused")
     @JavascriptInterface
     public String event(String params){
 
-        final String action = JSON.parseObject(params).getString("action");
+        final String action = JSON.parseObject(params).getString("action"); //js返回的标识
         final Event event = EventManager.getInstance().createEvent(action);
         LatteLogger.d("WEB_EVENT",params);
 

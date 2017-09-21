@@ -31,7 +31,7 @@ public class WebDelegateImpl extends WebDelegate {
     }
 
     @Override
-    public Object setLayout() {
+    public Object setLayout() {  //显示WebView
         return getmWebView();
     }
 
@@ -62,7 +62,7 @@ public class WebDelegateImpl extends WebDelegate {
     @Override
     public WebViewClient initWebViewClient() {
 
-        final WebViewClientImpl client = new WebViewClientImpl(this);
+        final WebViewClientImpl client = new WebViewClientImpl(this); //设置WebView加载状态时显示成功或失败
         client.setPageLoadListener(mIPageLoadListener);
         return client;
     }

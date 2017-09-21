@@ -77,6 +77,7 @@ public class Router {
     }
 
 
+    //拨打电话
     private void callPhone(Context context,String uri){
 
         final Intent intent = new Intent(Intent.ACTION_DIAL);

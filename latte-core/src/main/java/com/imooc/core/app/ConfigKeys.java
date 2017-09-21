@@ -16,6 +16,6 @@ public enum ConfigKeys {
     WE_CHAT_APP_SECRET,//微信app_secret
     ACTIVITY,
     HANDLER,
-    JAVASCRIPT_INTERFACE
+    JAVASCRIPT_INTERFACE //js 交互标识
 
 }

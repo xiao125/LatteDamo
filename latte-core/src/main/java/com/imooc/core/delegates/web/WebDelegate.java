@@ -32,7 +32,6 @@ public abstract class WebDelegate extends LatteDelegate implements IWebViewIniti
     public WebDelegate() {
     }
 
-
     public abstract IWebViewInitializer setInitializer();
 
 
@@ -62,8 +61,8 @@ public abstract class WebDelegate extends LatteDelegate implements IWebViewIniti
                 mWebView= initializer.initWebView(mWebView); //WebView
                 mWebView.setWebViewClient(initializer.initWebViewClient()); //WebViewClient
                 mWebView.setWebChromeClient(initializer.initWebChromeClient());//WebChromeClient
-                final String name = Latte.getConfiguration(ConfigKeys.JAVASCRIPT_INTERFACE);//获取javascript
-                mWebView.addJavascriptInterface(LatteWebInterface.create(this),name);
+                final String name = Latte.getConfiguration(ConfigKeys.JAVASCRIPT_INTERFACE);//与js交互的标识，一般都约定好的，比如”action“
+                mWebView.addJavascriptInterface(LatteWebInterface.create(this),name); //设置js交互
                 mIsWebViewAvailable = true;
             }else {
 
