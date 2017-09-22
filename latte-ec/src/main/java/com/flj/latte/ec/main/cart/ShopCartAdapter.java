@@ -13,7 +13,7 @@ import com.flj.latte.ec.R;
 import com.imooc.core.app.Latte;
 import com.imooc.core.net.RestClient;
 import com.imooc.core.net.callback.ISuccess;
-import com.joanzapata.iconify.internal.HasOnViewAttachListener;
+
 import com.joanzapata.iconify.widget.IconTextView;
 import com.latte.ui.recycler.MultipleFields;
 import com.latte.ui.recycler.MultipleItemEntity;
@@ -63,7 +63,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
         this.mCartItemListener = listener;
     }
 
-    public double getmTotalPrice(){
+    public double getmTotalPrice(){ //总价价格
         return mTotalPrice;
     }
 

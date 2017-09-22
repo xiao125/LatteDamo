@@ -9,7 +9,7 @@ enum ShopCartItemFields {
     DESC,
     COUNT,
     PRICE,
-    IS_SELECTED,
-    POSITION
+    IS_SELECTED,//是否选中
+    POSITION //数量
 
 }
