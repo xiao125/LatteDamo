@@ -40,9 +40,9 @@ public class ShopCartDelegate extends BottomItemDelegate  implements ISuccess,IC
 
     private ShopCartAdapter mAdapter =null;
 
-    //购物车数量标记
-    private int mCurrentCount = 0;
-    private int mTotalCount =0;
+
+    private int mCurrentCount = 0;//当前选中的item的数量
+    private int mTotalCount =0;//Recycler的item总数量
     private double mTotalPrice =0.00;
 
 
@@ -60,7 +60,7 @@ public class ShopCartDelegate extends BottomItemDelegate  implements ISuccess,IC
     @OnClick(R2.id.icon_shop_cart_select_all)
     void onClickSelectAll(){ //全选/反选
 
-        final int tag = (int) mIconSelectAll.getTag();
+        final int tag = (int) mIconSelectAll.getTag(); //根据tag判断是否选中
         if (tag == 0){
             mIconSelectAll.setTextColor(ContextCompat.getColor(getContext(), R.color.app_main));
             mIconSelectAll.setTag(1);
@@ -84,27 +84,27 @@ public class ShopCartDelegate extends BottomItemDelegate  implements ISuccess,IC
         final List<MultipleItemEntity> data = mAdapter.getData();
         //要删除的数据
         final List<MultipleItemEntity> deleteEntities = new ArrayList<>();
-        for (MultipleItemEntity entity :data){
+        for (MultipleItemEntity entity :data){  //取出需要删除的item
             final boolean isSelected  = entity.getField(ShopCartItemFields.IS_SELECTED); //获取是否选中状态
-            if (isSelected){
-                deleteEntities.add(entity);
+            if (isSelected){ //选中的item就是需要移除的item
+                deleteEntities.add(entity); //先保存起来
             }
         }
         for (MultipleItemEntity entity :deleteEntities){
-            int removePosition;
-            final int entityPosition = entity.getField(ShopCartItemFields.POSITION); //数量
-            if (entityPosition>mCurrentCount-1){
+            int removePosition; //需要删除的item数量
+            final int entityPosition = entity.getField(ShopCartItemFields.POSITION); //获取Recycler的item的位置
+            if (entityPosition>mCurrentCount-1){ //如果item的数量大于当前选中的item的数量
 
-                removePosition = entityPosition -(mTotalCount - mCurrentCount);
+                removePosition = entityPosition -(mTotalCount - mCurrentCount); //需要删除的item就数量
 
             }else {
 
-                removePosition = entityPosition;
+                removePosition = entityPosition; //Recycler的item的总数量
 
             }
-            if (removePosition <=mAdapter.getItemCount()){
-                mAdapter.remove(removePosition);
-                mCurrentCount = mAdapter.getItemCount();
+            if (removePosition <=mAdapter.getItemCount()){  //防止如果item没有了溢出（如果需要移除的item数量小于item总数）
+                mAdapter.remove(removePosition); //移除item
+                mCurrentCount = mAdapter.getItemCount(); //移除item后，Recycler中的item总数量
 
                 //更新数据
                 mAdapter.notifyItemRangeChanged(removePosition,mAdapter.getItemCount());
@@ -139,6 +139,10 @@ public class ShopCartDelegate extends BottomItemDelegate  implements ISuccess,IC
     private void createOrder(){
         final String orderUrl="";
         final WeakHashMap<String,Object> orderParams = new WeakHashMap<>();
+        orderParams.put("userid","");
+        orderParams.put("amount",0.01);
+        orderParams.put("comment","测试支付");
+        orderParams.put("ordertype",0);
 
         RestClient.builder()
                 .url(orderUrl)
@@ -172,7 +176,7 @@ public class ShopCartDelegate extends BottomItemDelegate  implements ISuccess,IC
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
 
-        mIconSelectAll.setTag(0);
+        mIconSelectAll.setTag(0); //初始化的时候设置默认的tag
 
     }
 
@@ -206,9 +210,9 @@ public class ShopCartDelegate extends BottomItemDelegate  implements ISuccess,IC
     }
 
     @Override
-    public void onItemClick(double itemTotalPrice) {
+    public void onItemClick(double itemTotalPrice) { //显示商品总价接口，itemTotalPrice是每个item的总价格，需要时再使用
 
-        final double price = mAdapter.getmTotalPrice();
+        final double price = mAdapter.getmTotalPrice(); //获取总价
         mTvTotalPrice.setText(String.valueOf(price));
 
 

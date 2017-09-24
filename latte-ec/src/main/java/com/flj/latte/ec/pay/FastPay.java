@@ -93,7 +93,7 @@ public class FastPay implements View.OnClickListener {
 
                         //必须是异步的调用客户端支付接口
                         final PayAsyncTask payAsyncTask = new PayAsyncTask(mActivity,mIAlPayResultListener);
-                        payAsyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,paySign);
+                        payAsyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,paySign); //多线程同时执行 pool_executor
                     }
                 })
                 .build()

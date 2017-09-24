@@ -5,6 +5,8 @@ import android.os.Handler;
 import android.support.annotation.NonNull;
 
 import com.blankj.utilcode.util.Utils;
+import com.imooc.core.delegates.web.event.Event;
+import com.imooc.core.delegates.web.event.EventManager;
 import com.joanzapata.iconify.IconFontDescriptor;
 import com.joanzapata.iconify.Iconify;
 import com.orhanobut.logger.AndroidLogAdapter;
@@ -131,7 +133,22 @@ public  final class Configurator {
         return this;
     }
 
-   // public Configurator withWebEvent(@NonNull String name,@NonNull Ev)
+    //添加webView
+   public Configurator withWebEvent(@NonNull String name, @NonNull Event event){
+       final EventManager manager = EventManager.getInstance();
+       manager.addEvent(name,event);
+       return this;
+
+   }
+
+   //添加Html域名
+   public Configurator withWebHost(String host){
+
+       LATTE_CONFIGS.put(ConfigKeys.WEB_HOST,host);
+       return this;
+   }
+
+
 
 
     //查询配置初始化是否完成

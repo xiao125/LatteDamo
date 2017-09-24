@@ -24,7 +24,7 @@ public class EventManager {
         return Holder.INSTANCE;
     }
 
-    public EventManager adEvent(@NonNull String name,@NonNull Event event){
+    public EventManager addEvent(@NonNull String name,@NonNull Event event){
 
         EVENTS.put(name,event);
         return this;

@@ -36,7 +36,7 @@ public class PayAsyncTask extends AsyncTask<String,Void,String> {
     @Override
     protected String doInBackground(String... params) {
 
-        final String alPaySign = params[0];
+        final String alPaySign = params[0]; //传入签名
         //支付宝调起支付接口
         final PayTask payTask = new PayTask(ACTIVITY);
         return payTask.pay(alPaySign,true);
@@ -52,6 +52,7 @@ public class PayAsyncTask extends AsyncTask<String,Void,String> {
         final PayResult payResult = new PayResult(result);
 
         final String resultInfo = payResult.getResult();
+        // 支付宝返回此次支付结构及加签，建议对支付宝签名信息拿签约时支付宝提供的公钥做验签
         final String resultStatus = payResult.getResultStatus();
         LatteLogger.d("AL_PAY_RESULT", resultInfo);
         LatteLogger.d("AL_PAY_RESULT", resultStatus);

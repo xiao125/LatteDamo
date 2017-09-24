@@ -30,7 +30,7 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
 
     private boolean mIsSelectedAll =false;
     private ICartItemListener mCartItemListener =null;
-    private double mTotalPrice =0.00;
+    private double mTotalPrice =0.00; //购物车总价格
 
     private static final RequestOptions OPTIONS = new RequestOptions()
             .diskCacheStrategy(DiskCacheStrategy.ALL)
@@ -153,8 +153,8 @@ public class ShopCartAdapter extends MultipleRecyclerAdapter {
 
                                            tvCount.setText(String.valueOf(countNum));
                                            if (mCartItemListener !=null){
-                                               mTotalPrice = mTotalPrice -price;
-                                               final double  itemTotal = countNum * price;
+                                               mTotalPrice = mTotalPrice -price; //购物车总价格
+                                               final double  itemTotal = countNum * price; //每个item的总价格
                                                mCartItemListener.onItemClick(itemTotal);
                                            }
 

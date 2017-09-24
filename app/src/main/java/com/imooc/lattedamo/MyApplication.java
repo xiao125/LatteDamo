@@ -6,6 +6,8 @@ import com.flj.latte.ec.database.DatabaseManager;
 import com.flj.latte.ec.icon.FontEcModule;
 import com.imooc.core.app.Latte;
 import com.imooc.core.net.interceptors.DebugInterceptor;
+import com.imooc.core.net.rx.AddCookieInterceptor;
+import com.imooc.lattedamo.event.TestEvent;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 
 /**
@@ -26,6 +28,9 @@ public class MyApplication extends Application {
                 .withInterceptor(new DebugInterceptor("test",R.raw.test))
                 .withWeChatAppId("你的微信AppKey")
                 .withWechatAppSecret("你的微信AppSecret")
+                .withWebEvent("test",new TestEvent())
+                .withWebHost("https://www.baidu.com/")//添加Cookie同步拦截器
+                .withInterceptor(new AddCookieInterceptor()) //添加cookit拦截器
                 .configure();
 
 
