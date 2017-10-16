@@ -73,7 +73,7 @@ public class PersonalDelegate extends BottomItemDelegate {
         super.onBindView(savedInstanceState, rootView);
 
 
-        final ListBean address = new ListBean.Builder()
+       /* final ListBean address = new ListBean.Builder()
                 .setItemType(ListItemType.ITEM_NORMAL)
                 .setId(1)
                 .setDelegate(new AddressDelegate())
@@ -89,7 +89,7 @@ public class PersonalDelegate extends BottomItemDelegate {
 
         final List<ListBean> data = new ArrayList<>();
         data.add(address);
-        data.add(system);
+        data.add(system);*/
 
 
     }
