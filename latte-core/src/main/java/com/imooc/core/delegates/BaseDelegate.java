@@ -73,7 +73,7 @@ public  abstract class BaseDelegate extends Fragment implements ISupportFragment
 
     if (setLayout() instanceof Integer){
 
-      rootView = inflater.inflate((Integer) setLayout(),container,false); //view
+      rootView = inflater.inflate((int) setLayout(),container,false); //view
 
     }else if (setLayout() instanceof View){
 

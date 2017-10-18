@@ -93,7 +93,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-        super.onBindView(savedInstanceState, rootView);
+
 
         //IndexDataConverter() json数据
         mRefreshHandler = RefreshHandler.create(mRefreshLayout,mRecyclerView,new IndexDataConverter());

@@ -24,7 +24,7 @@ public class MyApplication extends Application {
                 .withIcon(new FontAwesomeModule()) //设置矢量图
                 .withIcon(new FontEcModule()) //设置矢量图
                 .withLoaderDelayed(1000)
-                .withApiHost("http://116.196.95.67/RestServer/api")
+                .withApiHost("http://952cloud.top/RestServer/api/")
                 .withInterceptor(new DebugInterceptor("test",R.raw.test))
                 .withWeChatAppId("你的微信AppKey")
                 .withWechatAppSecret("你的微信AppSecret")

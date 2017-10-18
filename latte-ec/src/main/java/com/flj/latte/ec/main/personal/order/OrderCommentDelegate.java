@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.flj.latte.ec.R;
 import com.imooc.core.delegates.LatteDelegate;
 
 /**
@@ -15,11 +16,11 @@ public class OrderCommentDelegate extends LatteDelegate {
 
     @Override
     public Object setLayout() {
-        return super.setLayout();
+        return R.layout.delegate_bottom;
     }
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-        super.onBindView(savedInstanceState, rootView);
+
     }
 }

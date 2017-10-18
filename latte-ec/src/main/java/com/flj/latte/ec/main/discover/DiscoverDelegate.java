@@ -26,7 +26,6 @@ public class DiscoverDelegate extends BottomItemDelegate {
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-        super.onBindView(savedInstanceState, rootView);
     }
 
 

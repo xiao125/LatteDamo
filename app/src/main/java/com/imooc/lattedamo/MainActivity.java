@@ -1,6 +1,7 @@
 package com.imooc.lattedamo;
 
 import android.os.Bundle;
+import android.service.notification.StatusBarNotification;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.widget.Toast;
@@ -13,6 +14,8 @@ import com.imooc.core.app.Latte;
 import com.imooc.core.delegates.LatteDelegate;
 import com.latte.ui.launcher.ILauncherListener;
 import com.latte.ui.launcher.OnLauncherFinishTag;
+
+import qiu.niorgai.StatusBarCompat;
 
 /**
  * 主Activity+多Fragment
@@ -30,9 +33,11 @@ public class MainActivity extends ProxyActivity implements ISignListener,ILaunch
         }
 
         Latte.getConfigurator().withActivity(this);//全局的Activity
-
+        StatusBarCompat.translucentStatusBar(this,true); //修改状态栏颜色
 
     }
+
+
 
     @Override
     protected void onPause() {

@@ -77,7 +77,6 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
 
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
-        super.onBindView(savedInstanceState, rootView);
 
         final int size = ITEMS.size();
         for (int i=0; i<size;i++){
