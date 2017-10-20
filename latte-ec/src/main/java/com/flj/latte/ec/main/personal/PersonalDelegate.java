@@ -15,6 +15,7 @@ import com.flj.latte.ec.main.personal.list.ListBean;
 import com.flj.latte.ec.main.personal.list.ListItemType;
 import com.flj.latte.ec.main.personal.order.OrderListDelegate;
 import com.flj.latte.ec.main.personal.profile.UserProfileDelegate;
+import com.flj.latte.ec.main.personal.settings.SettingsDelegate;
 import com.imooc.core.delegates.bottom.BottomItemDelegate;
 
 import java.util.ArrayList;

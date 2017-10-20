@@ -1,20 +1,27 @@
 package com.imooc.lattedamo;
 
 import android.app.Application;
+import android.support.annotation.Nullable;
+import android.support.multidex.MultiDexApplication;
 
 import com.flj.latte.ec.database.DatabaseManager;
 import com.flj.latte.ec.icon.FontEcModule;
 import com.imooc.core.app.Latte;
 import com.imooc.core.net.interceptors.DebugInterceptor;
 import com.imooc.core.net.rx.AddCookieInterceptor;
+import com.imooc.core.util.callback.CallbackManager;
+import com.imooc.core.util.callback.CallbackType;
+import com.imooc.core.util.callback.IGlobalCallback;
 import com.imooc.lattedamo.event.TestEvent;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
+
+import cn.jpush.android.api.JPushInterface;
 
 /**
  * Created by Administrator on 2017/9/4.
  */
 
-public class MyApplication extends Application {
+public class MyApplication extends MultiDexApplication {
 
     @Override
     public void onCreate() {
@@ -36,6 +43,36 @@ public class MyApplication extends Application {
 
         //初始化数据库
         DatabaseManager.getInstance().init(this);
+
+        //开启极光推送
+        JPushInterface.setDebugMode(true);
+        JPushInterface.init(this);
+
+
+        CallbackManager.getInstance()
+                .addCallback(CallbackType.TAG_OPEN_PUSH, new IGlobalCallback() {
+                    @Override
+                    public void executeCallback(@Nullable Object args) {
+                        if (JPushInterface.isPushStopped(Latte.getApplicationContext())){
+                            //开启极光推送
+                            JPushInterface.setDebugMode(true);
+                            JPushInterface.init(Latte.getApplicationContext());
+
+                        }
+                    }
+                })
+                .addCallback(CallbackType.TAG_STOP_PUSH, new IGlobalCallback() {
+                    @Override
+                    public void executeCallback(@Nullable Object args) {
+                        if (!JPushInterface.isPushStopped(Latte.getApplicationContext())) {
+
+                            //关闭极光推送
+                            JPushInterface.stopPush(Latte.getApplicationContext());
+                        }
+                    }
+                });
+
+
 
     }
 }
