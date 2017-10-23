@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.imooc.core.ui.camera.CameraImageBean;
 import com.imooc.core.ui.camera.LatteCamera;
 import com.imooc.core.ui.camera.RequestCodes;
+import com.imooc.core.ui.scanner.ScannerDelegate;
 import com.imooc.core.util.callback.CallbackManager;
 import com.imooc.core.util.callback.CallbackType;
 import com.imooc.core.util.callback.IGlobalCallback;
@@ -52,19 +53,19 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
     public void startCameraWithCheck(){
 
         PermissionCheckerDelegatePermissionsDispatcher.startCameraWithCheck(this);
-
-
     }
 
     //扫描二维码(不直接调用)
     @NeedsPermission(Manifest.permission.CAMERA)
     void startScan(BaseDelegate delegate){
 
+        delegate.getSupportDelegate().startForResult(new ScannerDelegate(),RequestCodes.SCAN);
 
     }
 
     public void startScanWithCheck(BaseDelegate delegate){
 
+        PermissionCheckerDelegatePermissionsDispatcher.startScanWithCheck(this,delegate);
 
 
     }

@@ -10,11 +10,15 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import com.flj.latte.ec.R;
 import com.flj.latte.ec.R2;
 import com.flj.latte.ec.main.EcBottomDelegate;
 import com.imooc.core.delegates.bottom.BottomItemDelegate;
+import com.imooc.core.util.callback.CallbackManager;
+import com.imooc.core.util.callback.CallbackType;
+import com.imooc.core.util.callback.IGlobalCallback;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.latte.ui.recycler.BaseDecoration;
 import com.latte.ui.refresh.RefreshHandler;
@@ -46,8 +50,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
     @OnClick(R2.id.icon_index_scan)
     void onClickScanQrCode(){
 
-
-
+        startScanWithCheck(this.getParentDelegate()); //调用二维码扫描界面
     }
 
     //初始化下拉刷新
@@ -99,9 +102,19 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
         mRefreshHandler = RefreshHandler.create(mRefreshLayout,mRecyclerView,new IndexDataConverter());
 
         //二维码
+        CallbackManager.getInstance()
+                .addCallback(CallbackType.ON_SCAN, new IGlobalCallback() {
+                    @Override
+                    public void executeCallback(@Nullable Object args) {
+                        Toast.makeText(getContext(), "得到的二维码是" + args, Toast.LENGTH_LONG).show();
+                    }
+                });
+
+
 
         //搜索框
         mSearchView.setOnFocusChangeListener(this);
+
 
 
     }

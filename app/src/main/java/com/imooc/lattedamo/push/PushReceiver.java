@@ -64,6 +64,7 @@ public class PushReceiver extends BroadcastReceiver {
         final Bundle openActivityBundle = new Bundle();
         final Intent intent = new Intent(context, ExampleDelegate.class); //点击Notification跳转页面
         intent.putExtras(openActivityBundle);
+        //app是否在后台
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
         ContextCompat.startActivity(context,intent,null);
 

@@ -13,6 +13,7 @@
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MyApplication"
@@ -46,7 +47,7 @@
         </activity>
 
         <activity
-            android:name=".wxapi.WXPayEntryActivity"
+            android:name="com.imooc.lattedamo.wxapi.WXPayEntryActivity"
             android:exported="true"
             android:label="微信支付回调"
             android:launchMode="singleTop"
@@ -157,6 +158,33 @@
             android:name="JPUSH_APPKEY"
             android:value="26a34a494a1d5dc03b133b24" />
         <!--极光推送结束-->
+
+        <activity
+            android:name="com.mob.tools.MobUIShell"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" >
+
+        <!-- 调用新浪原生SDK，需要注册的回调activity -->
+        <intent-filter>
+            <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+
+        <!-- ShareSDK3.1.0版本之前才需要在MobUIShell下面注册此意图，3.1.0版本之后（包含3.1.0）不需要注册此intent-->
+        <intent-filter>
+            <data android:scheme="tencent100371282" />
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.BROWSABLE" />
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+
+        </activity>
+
+        <!-- 填写您从Mob开发者后台中得到的Appkey和AppSecret -->
+        <meta-data android:name="Mob-AppKey" android:value="21d3590683874"/>
+        <meta-data android:name="Mob-AppSecret" android:value="475732bbc450421f7cf252dd4e91034d"/>
 
 
     </application>
