@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.flj.latte.ec.R;
 import com.flj.latte.ec.R2;
 import com.flj.latte.ec.main.EcBottomDelegate;
+import com.flj.latte.ec.main.index.search.SearchDelegate;
 import com.imooc.core.delegates.bottom.BottomItemDelegate;
 import com.imooc.core.util.callback.CallbackManager;
 import com.imooc.core.util.callback.CallbackType;
@@ -43,7 +44,6 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
     IconTextView mIconScan = null;
     @BindView(R2.id.et_search_view)
     AppCompatEditText mSearchView = null;  //搜索框
-
 
     private RefreshHandler mRefreshHandler = null;//下拉刷新回调监听
 
@@ -124,7 +124,7 @@ public class IndexDelegate extends BottomItemDelegate implements View.OnFocusCha
     public void onFocusChange(View view, boolean hasFocus) {
 
         if (hasFocus){ //搜索
-           // getParentDelegate().getSupportDelegate().start(new SearchDel);
+           getParentDelegate().getSupportDelegate().start(new SearchDelegate());
         }
     }
 }

@@ -5,6 +5,7 @@ import android.view.View;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.chad.library.adapter.base.listener.SimpleClickListener;
+import com.flj.latte.ec.datail.GoodsDetailDelegate;
 import com.imooc.core.delegates.LatteDelegate;
 import com.latte.ui.recycler.MultipleFields;
 import com.latte.ui.recycler.MultipleItemEntity;
@@ -32,10 +33,10 @@ public class IndexItemClickListener extends SimpleClickListener {
     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
 
         final MultipleItemEntity entity = (MultipleItemEntity) baseQuickAdapter.getData().get(position);
-        final int goodsId = entity.getField(MultipleFields.ID);
+        final int goodsId = entity.getField(MultipleFields.ID); //传入的id
         //详情页面
-      //  final GoodsDetailDelegate delegate = GoodsDetailDelegate.create(goodsId); //详情页面
-      //  DELEGATE.getSupportDelegate().start(delegate); //跳转详情页面
+        final GoodsDetailDelegate delegate = GoodsDetailDelegate.create(goodsId); //详情页面
+        DELEGATE.getSupportDelegate().start(delegate); //跳转详情页面
 
     }
 
