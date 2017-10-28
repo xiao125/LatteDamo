@@ -21,12 +21,19 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.bigkoo.convenientbanner.ConvenientBanner;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.bumptech.glide.request.RequestOptions;
+import com.daimajia.androidanimations.library.YoYo;
 import com.flj.latte.ec.R;
 import com.flj.latte.ec.R2;
 import com.imooc.core.delegates.LatteDelegate;
 import com.imooc.core.net.RestClient;
 import com.imooc.core.net.callback.ISuccess;
+import com.imooc.core.util.log.LatteLogger;
 import com.joanzapata.iconify.widget.IconTextView;
+import com.latte.ui.animation.BezierAnimation;
+import com.latte.ui.animation.BezierUtil;
 import com.latte.ui.banner.HolderCreator;
 import com.latte.ui.widget.CircleTextView;
 
@@ -34,6 +41,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
+import de.hdodenhof.circleimageview.CircleImageView;
 import me.yokeyword.fragmentation.anim.DefaultHorizontalAnimator;
 import me.yokeyword.fragmentation.anim.FragmentAnimator;
 
@@ -41,7 +50,8 @@ import me.yokeyword.fragmentation.anim.FragmentAnimator;
  * Created by Administrator on 2017/10/25 0025.
  */
 
-public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.OnOffsetChangedListener {
+public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.OnOffsetChangedListener,
+        BezierUtil.AnimationListener{
 
     @BindView(R2.id.goods_detail_toolbar)
     Toolbar mToolbar = null;
@@ -63,7 +73,7 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
     CircleTextView mCircleTextView = null;
     @BindView(R2.id.rl_add_shop_cart)
     RelativeLayout mRlAddShopCart = null;
-    @BindView(R2.id.icon_shop_cart)
+    @BindView(R2.id.icon_shop_cart) //购物车数量标识
     IconTextView mIconShopCart = null;
 
     private static final String ARG_GOODS_ID = "ARG_GOODS_ID";
@@ -71,6 +81,34 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
 
     private String mGoodsThumbUrl = null;
     private int mShopCount = 0; //购物车数量
+
+
+    private static final RequestOptions OPTIONS = new RequestOptions()
+            .diskCacheStrategy(DiskCacheStrategy.ALL)
+            .centerCrop()
+            .dontAnimate()
+            .override(100,100);
+
+    @OnClick(R2.id.rl_add_shop_cart)
+    void onClickAddShopCart(){
+
+        final CircleImageView animImg = new CircleImageView(getContext());
+        Glide.with(this)
+                .load(mGoodsThumbUrl)
+                .apply(OPTIONS)
+                .into(animImg); //显示图片
+
+        /**参数：
+         * 上下文
+         * 开始
+         * 结束
+         * 动画显示的imagev
+         * 监听回调
+         */
+        BezierAnimation.addCart(this,mRlAddShopCart,mIconShopCart,animImg,this); //显示加入购物车轨迹
+
+
+    }
 
     public static GoodsDetailDelegate create(int goodsId){
 
@@ -137,7 +175,7 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
 
                         initPager(data); //Tabyout apadter
 
-                        setShopCartCount(data); //加入购物车赛贝尔曲线效果
+                        setShopCartCount(data); //显示该商品在购物车的数量
 
 
 
@@ -187,9 +225,9 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
 
     private void setShopCartCount(JSONObject data){
 
-        mGoodsThumbUrl = data.getString("thumb");
+        mGoodsThumbUrl = data.getString("thumb");//获得商品icon url
         if (mShopCount ==0){
-            mCircleTextView.setVisibility(View.GONE);
+            mCircleTextView.setVisibility(View.GONE); //如果没有加入购物车就隐藏
         }
 
 
@@ -207,5 +245,32 @@ public class GoodsDetailDelegate extends LatteDelegate implements AppBarLayout.O
     }
 
 
+    @Override
+    public void onAnimationEnd() {
 
+        //执行加入购物车动画
+        YoYo.with(new ScaleUpAnimator())
+                .duration(500)
+                .playOn(mIconShopCart);
+
+        //请求服务端添加购物车数量
+        RestClient.builder()
+                .url("add_shop_cart_count.php")
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String response) {
+                        LatteLogger.json("ADD", response);
+                        final boolean isAdded = JSON.parseObject(response).getBoolean("data");
+                        if (isAdded){  //添加成功
+                            mShopCount++; //数量增加
+                            mCircleTextView.setVisibility(View.VISIBLE);
+                            mCircleTextView.setText(String.valueOf(mShopCount)); //显示购物车数量
+                        }
+                    }
+                })
+                .params("count",mShopCount)
+                .build()
+                .post();
+
+    }
 }
