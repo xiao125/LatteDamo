@@ -36,9 +36,10 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
     private int mIndexDelegate =0;//当前下标
     private int mClickedColor= Color.RED;//当前选择后的颜色
 
-    @BindView(R2.id.bottom_bar)
+    @BindView(R2.id.bottom_bar) //底部布局控件
     LinearLayoutCompat mBottomBar = null;
 
+    //LinkedHashMap读取数据的顺序是根据写入的顺序
     public abstract LinkedHashMap<BottomTabBean,BottomItemDelegate> setItems(ItemBuilder builder);
 
     @Override
@@ -68,7 +69,7 @@ public abstract class BaseBottomDelegate extends LatteDelegate implements View.O
         for (Map.Entry<BottomTabBean,BottomItemDelegate> item : ITEMS.entrySet()){
             final BottomTabBean key = item.getKey();
             final BottomItemDelegate value = item.getValue();
-            TAB_BEANS.add(key);//添加BottomTab
+            TAB_BEANS.add(key);
             ITEM_DELEGATES.add(value);//添加BottomItem
         }
 

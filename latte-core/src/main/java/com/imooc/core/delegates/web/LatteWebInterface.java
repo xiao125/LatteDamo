@@ -8,7 +8,7 @@ import com.imooc.core.delegates.web.event.EventManager;
 import com.imooc.core.util.log.LatteLogger;
 
 /**
- * Created by Administrator on 2017/9/20 0020.
+ * Created
  */
 
 public class LatteWebInterface {
@@ -30,15 +30,15 @@ public class LatteWebInterface {
     public String event(String params){
 
         final String action = JSON.parseObject(params).getString("action"); //js返回的标识
-        final Event event = EventManager.getInstance().createEvent(action);
+        final Event event = EventManager.getInstance().createEvent(action); //读取HashMap中的数据
         LatteLogger.d("WEB_EVENT",params);
 
-        if (event !=null){
+        if (event !=null){ //存入相应的数据
 
             event.setmAction(action);
             event.setmDelegate(DELEGATE);
             event.setmContent(DELEGATE.getContext());
-            event.setmUrl(DELEGATE.getUrl());
+            event.setmUrl(DELEGATE.getUrl()); //获取的webview 显示的url
             return event.execute(params);
         }
 

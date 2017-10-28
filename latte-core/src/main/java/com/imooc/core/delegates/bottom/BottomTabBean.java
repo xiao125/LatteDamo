@@ -1,7 +1,7 @@
 package com.imooc.core.delegates.bottom;
 
 /**
- * charSequence是一个接口，表示char值的一个可读可写序列
+ * charSequence是一个接口，表示char值的一个可读可写序列 ，是String是继承CharSequence
  * Created by Administrator on 2017/9/16 0016.
  */
 

@@ -23,7 +23,7 @@ import com.imooc.core.util.storage.LattePreference;
 public class WebViewClientImpl extends WebViewClient {
 
     private final WebDelegate DELEGATE;
-    private IPageLoadListener mIPageLoadListener = null;
+    private IPageLoadListener mIPageLoadListener = null;//加载进度监听回调
     private static final Handler HANDLER = Latte.getHandler();
 
     public void setPageLoadListener(IPageLoadListener listener){
@@ -35,14 +35,14 @@ public class WebViewClientImpl extends WebViewClient {
     }
 
     @Override
-    public boolean shouldOverrideUrlLoading(WebView view, String url) {
+    public boolean shouldOverrideUrlLoading(WebView view, String url) { //实现对网页中超链接的拦截
 
         LatteLogger.d("shouldOverrideUrlLoading",url);
         return Router.getInstance().handleWebUrl(DELEGATE, url);
     }
 
     @Override
-    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+    public void onPageStarted(WebView view, String url, Bitmap favicon) { //开始加载网页时调用
         super.onPageStarted(view, url, favicon);
         if (mIPageLoadListener !=null){
             mIPageLoadListener.onLoadStart();
@@ -73,7 +73,7 @@ public class WebViewClientImpl extends WebViewClient {
 
 
     @Override
-    public void onPageFinished(WebView view, String url) {
+    public void onPageFinished(WebView view, String url) { //加载结束时调用
         super.onPageFinished(view, url);
 
         syncCookie();

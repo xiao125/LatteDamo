@@ -33,7 +33,7 @@ public class Router {
 
     public final boolean handleWebUrl(WebDelegate delegate,String url){
 
-        //如果是电话协议
+        //如果是url中是电话协议
         if (url.contains("tel:")){
             callPhone(delegate.getContext(),url);
             return true;
@@ -41,13 +41,13 @@ public class Router {
 
         final LatteDelegate topDelegate = delegate.getTopDelegate();
 
-        final WebDelegateImpl webDelegate  = WebDelegateImpl.create(url);
+        final WebDelegateImpl webDelegate  = WebDelegateImpl.create(url); //传递url
         topDelegate.getSupportDelegate().start(webDelegate);
 
         return true;
     }
 
-    private void loadWebPage(WebView webView,String url){
+    private void loadWebPage(WebView webView,String url){ //Webview设置url
 
         if (webView !=null){
             webView.loadUrl(url);
@@ -62,17 +62,17 @@ public class Router {
     }
 
 
-    private void loadPage(WebView webView, String url) {
+    private void loadPage(WebView webView, String url) { //判断url
         if (URLUtil.isNetworkUrl(url) || URLUtil.isAssetUrl(url)) {
-            loadWebPage(webView, url);
+            loadWebPage(webView, url); //网络加载
         } else {
-            loadLocalPage(webView, url);
+            loadLocalPage(webView, url); //本地url
         }
     }
 
     public final void loadPage(WebDelegate delegate,String url){
 
-        loadPage(delegate.getmWebView(),url);
+        loadPage(delegate.getmWebView(),url); //加载
 
     }
 

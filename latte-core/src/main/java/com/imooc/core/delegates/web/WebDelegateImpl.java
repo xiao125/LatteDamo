@@ -21,7 +21,7 @@ public class WebDelegateImpl extends WebDelegate {
 
     private IPageLoadListener mIPageLoadListener = null;
 
-    public static WebDelegateImpl create(String url){
+    public static WebDelegateImpl create(String url){ //传递Url
 
         final Bundle args = new Bundle();
         args.putString(RouteKeys.URL.name(),url);
@@ -43,8 +43,8 @@ public class WebDelegateImpl extends WebDelegate {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, @NonNull View rootView) {
 
-        if (getUrl() !=null){
-            //用原生的方式模拟Web跳转并进行页面加载
+        if (getUrl() !=null){ //
+            //用原生的方式模拟Web跳转并进行页面加载(加载webView)
             Router.getInstance().loadPage(this,getUrl());
         }
     }
@@ -56,7 +56,7 @@ public class WebDelegateImpl extends WebDelegate {
 
     @Override
     public WebView initWebView(WebView webView) {
-        return new WebViewInitializer().createWebView(webView); //webview 设置
+        return new WebViewInitializer().createWebView(webView); //webview页面显示效果设置
     }
 
     @Override

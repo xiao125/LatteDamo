@@ -10,6 +10,10 @@ import java.util.HashMap;
 
 public class EventManager {
 
+    /**
+     * Event 解析js实体类
+     */
+
     private static final HashMap<String,Event> EVENTS = new HashMap<>();
 
     public EventManager() {

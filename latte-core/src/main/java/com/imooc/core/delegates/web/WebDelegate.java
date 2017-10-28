@@ -24,6 +24,13 @@ import java.lang.ref.WeakReference;
 public abstract class WebDelegate extends LatteDelegate implements IWebViewInitializer {
 
     private WebView mWebView=null;
+
+    /**
+     * WeakReference的父类Reference中有一个变量queue，是ReferenceQueue类型的。
+     * WeakReference中的构造函数中有一个两个参数的构造函数，
+     * 其中第二个参数就是这个ReferenceQueue，表示在WeakReference指向的对象被回收之后，
+     * 可以利用ReferenceQueue来保存被回收的对象
+     */
     private final ReferenceQueue<WebView> WEB_VIEW_QUEUE = new ReferenceQueue<>();
     private String mUrl=null;
     private boolean mIsWebViewAvailable =false;
@@ -54,14 +61,22 @@ public abstract class WebDelegate extends LatteDelegate implements IWebViewIniti
 
             final IWebViewInitializer initializer = setInitializer();
             if (initializer !=null){
+
+                //WeakReference 弱引用
                 final WeakReference<WebView> webViewWeakReference =
-                        new WeakReference<WebView>(new WebView(getContext()),WEB_VIEW_QUEUE);
+                        new WeakReference<>(new WebView(getContext()),WEB_VIEW_QUEUE);
 
                 mWebView = webViewWeakReference.get();
                 mWebView= initializer.initWebView(mWebView); //WebView
                 mWebView.setWebViewClient(initializer.initWebViewClient()); //WebViewClient
                 mWebView.setWebChromeClient(initializer.initWebChromeClient());//WebChromeClient
                 final String name = Latte.getConfiguration(ConfigKeys.JAVASCRIPT_INTERFACE);//与js交互的标识，一般都约定好的，比如”action“
+                /**
+                 * addJavascriptInterface将一个对象加入到webview中作为js方法供js调用，从而实现js与java的通信。
+                 * addJavascriptInterface包含两项参数:
+                 * 第一个参数：绑定到JavaScript的类实例
+                 * 第二个参数：用来显示JavaScript中的实例的名称
+                 */
                 mWebView.addJavascriptInterface(LatteWebInterface.create(this),name); //设置js交互
                 mIsWebViewAvailable = true;
             }else {
