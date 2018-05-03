@@ -33,7 +33,7 @@ public  final class Configurator {
 
     private Configurator(){
 
-        LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY,false);//默认是设置未初始化
+        LATTE_CONFIGS.put(ConfigKeys.CONFIG_READY.name(),false);//默认是设置未初始化
         LATTE_CONFIGS.put(ConfigKeys.HANDLER,HANDLER);//添加Handler
 
     }
@@ -51,8 +51,6 @@ public  final class Configurator {
     private static  class  Holder{
 
         private static final Configurator INSTANCE = new Configurator();
-
-
     }
 
 
@@ -156,7 +154,6 @@ public  final class Configurator {
 
         final boolean isReady = (boolean) LATTE_CONFIGS.get(ConfigKeys.CONFIG_READY);
         if (!isReady){
-
             throw new RuntimeException("初始化未完成");
         }
     }

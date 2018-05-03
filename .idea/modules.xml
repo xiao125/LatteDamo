@@ -3,13 +3,20 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/LatteDamo.iml" filepath="$PROJECT_DIR$/LatteDamo.iml" />
-      <module fileurl="file://$PROJECT_DIR$/LatteDamo-master.iml" filepath="$PROJECT_DIR$/LatteDamo-master.iml" />
+      <module fileurl="file://F:\AndroidStudioProjects\gradle\Latte\LatteDamo\LatteDamo.iml" filepath="F:\AndroidStudioProjects\gradle\Latte\LatteDamo\LatteDamo.iml" />
+      <module fileurl="file://F:\AndroidStudioProjects\gradle\Latte\LatteDamo\LatteDamo-master.iml" filepath="F:\AndroidStudioProjects\gradle\Latte\LatteDamo\LatteDamo-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://F:\AndroidStudioProjects\gradle\Latte\LatteDamo\app\app.iml" filepath="F:\AndroidStudioProjects\gradle\Latte\LatteDamo\app\app.iml" />
       <module fileurl="file://$PROJECT_DIR$/latte-annotations/latte-annotations.iml" filepath="$PROJECT_DIR$/latte-annotations/latte-annotations.iml" />
+      <module fileurl="file://F:\AndroidStudioProjects\gradle\Latte\LatteDamo\latte-annotations\latte-annotations.iml" filepath="F:\AndroidStudioProjects\gradle\Latte\LatteDamo\latte-annotations\latte-annotations.iml" />
       <module fileurl="file://$PROJECT_DIR$/latte-compiler/latte-compiler.iml" filepath="$PROJECT_DIR$/latte-compiler/latte-compiler.iml" />
+      <module fileurl="file://F:\AndroidStudioProjects\gradle\Latte\LatteDamo\latte-compiler\latte-compiler.iml" filepath="F:\AndroidStudioProjects\gradle\Latte\LatteDamo\latte-compiler\latte-compiler.iml" />
       <module fileurl="file://$PROJECT_DIR$/latte-core/latte-core.iml" filepath="$PROJECT_DIR$/latte-core/latte-core.iml" />
+      <module fileurl="file://F:\AndroidStudioProjects\gradle\Latte\LatteDamo\latte-core\latte-core.iml" filepath="F:\AndroidStudioProjects\gradle\Latte\LatteDamo\latte-core\latte-core.iml" />
       <module fileurl="file://$PROJECT_DIR$/latte-ec/latte-ec.iml" filepath="$PROJECT_DIR$/latte-ec/latte-ec.iml" />
+      <module fileurl="file://F:\AndroidStudioProjects\gradle\Latte\LatteDamo\latte-ec\latte-ec.iml" filepath="F:\AndroidStudioProjects\gradle\Latte\LatteDamo\latte-ec\latte-ec.iml" />
       <module fileurl="file://$PROJECT_DIR$/latte-ui/latte-ui.iml" filepath="$PROJECT_DIR$/latte-ui/latte-ui.iml" />
+      <module fileurl="file://F:\AndroidStudioProjects\gradle\Latte\LatteDamo\latte-ui\latte-ui.iml" filepath="F:\AndroidStudioProjects\gradle\Latte\LatteDamo\latte-ui\latte-ui.iml" />
     </modules>
   </component>
 </project>

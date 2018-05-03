@@ -49,10 +49,54 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
 
     }
 
+
+    @NeedsPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void checkWrite(){
+
+    }
+
+    @NeedsPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+    void checkRed(){
+
+    }
+
+
+    @OnPermissionDenied(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void onWriteaDenied() {
+        Toast.makeText(getContext(), "不允许写文件", Toast.LENGTH_LONG).show();
+    }
+
+    @OnNeverAskAgain(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+    void onWriteNever() {
+        Toast.makeText(getContext(), "永久拒绝写文件", Toast.LENGTH_LONG).show();
+    }
+
+
+    @OnPermissionDenied(Manifest.permission.READ_EXTERNAL_STORAGE)
+    void onRedDenied() {
+        Toast.makeText(getContext(), "不允读文件", Toast.LENGTH_LONG).show();
+    }
+
+    @OnNeverAskAgain(Manifest.permission.READ_EXTERNAL_STORAGE)
+    void onRedNever() {
+        Toast.makeText(getContext(), "永久拒绝读文件", Toast.LENGTH_LONG).show();
+    }
+
+    @OnShowRationale(Manifest.permission.READ_EXTERNAL_STORAGE)
+    void onRedRationale(PermissionRequest request) {
+        showRationaleDialog(request);
+    }
+
+
+
+
     //这个是真正调用的方法
     public void startCameraWithCheck(){
 
         PermissionCheckerDelegatePermissionsDispatcher.startCameraWithCheck(this);
+
+        PermissionCheckerDelegatePermissionsDispatcher.checkWriteWithCheck(this);
+        PermissionCheckerDelegatePermissionsDispatcher.checkRedWithCheck(this);
     }
 
     //扫描二维码(不直接调用)
@@ -70,6 +114,9 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
 
     }
 
+
+
+
     @OnPermissionDenied(Manifest.permission.CAMERA)
     void onCameraDenied(){
         Toast.makeText(getContext(), "不允许拍照", Toast.LENGTH_LONG).show();
@@ -80,6 +127,7 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
         Toast.makeText(getContext(), "永久拒绝权限", Toast.LENGTH_LONG).show();
 
     }
+
 
     @OnShowRationale(Manifest.permission.CAMERA)
     void onCameraRationale(PermissionRequest request){

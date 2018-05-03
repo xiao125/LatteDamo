@@ -3,7 +3,7 @@ package com.flj.latte.ec.icon;
 import com.joanzapata.iconify.Icon;
 
 /**
- * Created by Administrator on 2017/9/4.
+ * 字体图标配置
  */
 
 public enum  EcIcons implements Icon {
