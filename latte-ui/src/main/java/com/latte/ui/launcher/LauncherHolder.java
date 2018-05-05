@@ -8,7 +8,7 @@ import com.bigkoo.convenientbanner.holder.Holder;
 
 /**
  * image holder
- * Created by Administrator on 2017/9/13 0013.
+ *
  */
 
 public class LauncherHolder implements Holder<Integer> {

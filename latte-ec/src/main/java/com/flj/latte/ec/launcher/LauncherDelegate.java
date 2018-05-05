@@ -29,7 +29,7 @@ import butterknife.OnClick;
 import butterknife.Unbinder;
 
 /**
- * 闪屏页
+ * 闪屏页， 每次进入app时。此页面始终依附在MainActivity中（单Activity+多Fragment）架构,
  * Created by Administrator on 2017/9/13 0013.
  */
 
@@ -119,7 +119,7 @@ public class LauncherDelegate extends LatteDelegate implements ITimerListener {
 
         if (!LattePreference.getAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name())){
 
-            //开始引导页界面
+            //开始引导页界面，其中第二个参数是启动模式
             getSupportDelegate().start(new LauncherScrollDelegate(),SINGLETASK);
 
         }else {

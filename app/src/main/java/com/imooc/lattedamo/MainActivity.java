@@ -18,7 +18,7 @@ import com.latte.ui.launcher.OnLauncherFinishTag;
 import qiu.niorgai.StatusBarCompat;
 
 /**
- * 主Activity+多Fragment
+ * 主Activity+多Fragment 。此Activity始终监听着各个Fragment的回调方法
  */
 public class MainActivity extends ProxyActivity implements ISignListener,ILauncherListener {
 
@@ -79,6 +79,8 @@ public class MainActivity extends ProxyActivity implements ISignListener,ILaunch
 
             case NOT_SIGNED:
                 Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_LONG).show();
+
+                //startWithPop 启动方式：就是把上一层视图清除掉
                 getSupportDelegate().startWithPop(new SignInDelegate()); //跳转登录页面
 
                 break;

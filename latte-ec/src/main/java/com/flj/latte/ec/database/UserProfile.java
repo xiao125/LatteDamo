@@ -5,6 +5,7 @@ import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
 
 /**
+ * 使用 greendao 生成数据库表
  * Created by Administrator n 2017/9/14.
  */
 @Entity(nameInDb = "user_profile")

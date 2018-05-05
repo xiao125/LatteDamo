@@ -47,7 +47,7 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
                 .setPageIndicator(new int[]{R.drawable.dot_normal, R.drawable.dot_focus})
                 .setPageIndicatorAlign(ConvenientBanner.PageIndicatorAlign.CENTER_HORIZONTAL)//设置指示器的方向
                 .setOnItemClickListener(this) //点击监听
-                .setCanLoop(false);
+                .setCanLoop(false); //是否可以循环
 
 
     }
@@ -77,7 +77,7 @@ public class LauncherScrollDelegate extends LatteDelegate implements OnItemClick
     @Override
     public void onItemClick(int position) {
 
-        if (position == INIEGERS.size()-1){
+        if (position == INIEGERS.size()-1){ //如果点击的是最后一个
             //存入SharePrference中
             LattePreference.setAppFlag(ScrollLauncherTag.HAS_FIRST_LAUNCHER_APP.name(),true);
 

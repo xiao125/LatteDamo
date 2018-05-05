@@ -22,8 +22,8 @@ public final class DownloadHandler {
     private final WeakHashMap<String, Object> PARAMS;
     private final IRequest REQUEST;
     private final String DOWNLOAD_DIR;
-    private final String EXTENSION;
-    private final String NAME;
+    private final String EXTENSION; //文件后缀
+    private final String NAME; //文件名字
     private final ISuccess SUCCESS;
     private final IFailure FAILURE;
     private final IError ERROR;

@@ -16,7 +16,7 @@ public abstract class BaseInterceptor implements Interceptor{
 
 
     /**
-     * 有序的Url段
+     * 有序的Url 参数段
      * @param chain
      * @return
      */
@@ -34,6 +34,12 @@ public abstract class BaseInterceptor implements Interceptor{
     }
 
 
+    /**
+     * 通过Key值获取value
+     * @param chain
+     * @param key
+     * @return
+     */
     protected String getUrlParameters(Chain chain,String key){
         final Request request = chain.request();
         return request.url().queryParameter(key);

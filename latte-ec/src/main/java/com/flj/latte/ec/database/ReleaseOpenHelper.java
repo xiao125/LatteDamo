@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import org.greenrobot.greendao.database.Database;
 
 /**
+ *
  * Created by Administrator on 2017/9/14.
  */
 

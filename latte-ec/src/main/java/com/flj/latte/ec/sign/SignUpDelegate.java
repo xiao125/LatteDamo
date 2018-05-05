@@ -53,7 +53,7 @@ public class SignUpDelegate extends LatteDelegate {
 
         if (checkForm()){
             RestClient.builder()
-                    .url("http://192.168.56.1:8080/RestDataServer/api/user_profile.php")
+                    .url("http://oxjde2kpq.bkt.clouddn.com/RestDataServer/api/user_profile.php")
                     .params("name", mName.getText().toString())
                     .params("email", mEmail.getText().toString())
                     .params("phone", mPhone.getText().toString())

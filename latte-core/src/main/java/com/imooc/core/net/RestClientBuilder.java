@@ -124,7 +124,7 @@ public class RestClientBuilder {
 
     public final RestClient build(){
 
-        return new RestClient(mUrl, PARAMS,
+        return new RestClient(mUrl,PARAMS,
                 mDownloadDir, mExtension, mName,
                 mIRequest, mISuccess, mIFailure,
                 mIError, mBody, mFile, mContext,

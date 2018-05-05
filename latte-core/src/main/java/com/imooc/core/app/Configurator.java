@@ -109,6 +109,17 @@ public  final class Configurator {
 
     }
 
+    public final Configurator withInterceptors(ArrayList<Interceptor> interceptors){
+
+        INTERCEPTORS.addAll(interceptors);
+        LATTE_CONFIGS.put(ConfigKeys.INTERCEPTOR,INTERCEPTORS);
+        return this;
+
+    }
+
+
+
+
     //微信appid
     public final Configurator withWeChatAppId(String appId){
         LATTE_CONFIGS.put(ConfigKeys.WE_CHAT_APP_ID,appId);

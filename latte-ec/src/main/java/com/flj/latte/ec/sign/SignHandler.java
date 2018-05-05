@@ -7,6 +7,7 @@ import com.flj.latte.ec.database.UserProfile;
 import com.imooc.core.app.AccountManager;
 
 /**
+ * 登录管理类
  * Created by Administrator on 2017/9/14.
  */
 
@@ -21,10 +22,11 @@ public class SignHandler {
         final String gender = profileJson.getString("gender");
         final String address = profileJson.getString("address");
 
+        //获取到登录成功后返回的数据。并插入数据库中
         final UserProfile profile = new UserProfile(userId,name,avatar,gender,address);
         DatabaseManager.getInstance().getmDao().insert(profile);//添加数据
 
-        //已经注册并录成功了
+        //更新是否登录状态
         AccountManager.setSignState(true);
         signListener.onSignInSuccess();
 
@@ -40,10 +42,11 @@ public class SignHandler {
         final String gender = profileJson.getString("gender");
         final String address = profileJson.getString("address");
 
+        //获取到注册成功后的数据，并插入到数据库中
         final UserProfile profile = new UserProfile(userId, name, avatar, gender, address);
         DatabaseManager.getInstance().getmDao().insert(profile);
 
-        //已经注册并登录成功了
+        //更新是否登录状态
         AccountManager.setSignState(true);
         signListener.onSignUpSuccess();
     }

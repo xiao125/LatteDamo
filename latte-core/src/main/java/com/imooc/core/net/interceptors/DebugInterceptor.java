@@ -27,6 +27,7 @@ public class DebugInterceptor extends BaseInterceptor {
         this.DEBUG_RAW_ID = rawId;
     }
 
+    //返回需要的response
     private Response getResponse(Chain chain,String json){
 
         return new Response.Builder()
@@ -51,9 +52,9 @@ public class DebugInterceptor extends BaseInterceptor {
     @Override
     public Response intercept(@NonNull Chain chain) throws IOException {
         final String url = chain.request().url().toString();
-        if (url.contains(DEBUG_URL)){
+        if (url.contains(DEBUG_URL)){ //如果拦截的URL包含关键字
 
-            return debugResponse(chain,DEBUG_RAW_ID);
+            return debugResponse(chain,DEBUG_RAW_ID); //返回需要的数据
         }
 
         return chain.proceed(chain.request());
