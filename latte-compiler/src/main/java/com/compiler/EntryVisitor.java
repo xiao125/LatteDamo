@@ -12,14 +12,14 @@ import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.SimpleAnnotationValueVisitor7;
 
 /**
- * Created by Administrator on 2017/9/15 0015.
+ * 生成一个访问器（微信登录）
  */
 
 public class EntryVisitor extends SimpleAnnotationValueVisitor7<Void,Void> {
 
-    private final Filer FILER;
+    private final Filer FILER; //需要遍历的东西
 
-    private String mPackageName =null;
+    private String mPackageName =null; //最终获取的包名
 
     public EntryVisitor(Filer FILER) {
         this.FILER = FILER;
@@ -40,15 +40,18 @@ public class EntryVisitor extends SimpleAnnotationValueVisitor7<Void,Void> {
         return p;
     }
 
+
+    //生成模板代码
     private void generateJavaCode(TypeMirror typeMirror){
-        final TypeSpec targetActivity = TypeSpec.classBuilder("WXEntryActivity")
+        final TypeSpec targetActivity = TypeSpec.classBuilder("WXEntryActivity") //微信规定的类名
                 .addModifiers(Modifier.PUBLIC)
                 .addModifiers(Modifier.FINAL)
                 .superclass(TypeName.get(typeMirror))
                 .build();
 
+        //微信规定的包名： app包名+.wxapi
         final JavaFile javaFile = JavaFile.builder(mPackageName+".wxapi",targetActivity)
-                .addFileComment("微信入口文件")
+                .addFileComment("微信入口文件") //注释
                 .build();
         try{
             javaFile.writeTo(FILER);

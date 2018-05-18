@@ -6,7 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by Administrator on 2017/9/15 0015.
+ * 注解类， 传入包名
+ * @Target(ElementType.TYPE) 表示次注解用在类上面
+ *  @Retention(RetentionPolicy.SOURCE) 表示编译期在源码上运行
  */
 
 @Target(ElementType.TYPE)

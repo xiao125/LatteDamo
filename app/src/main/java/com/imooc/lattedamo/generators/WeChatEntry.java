@@ -6,8 +6,10 @@ import com.imooc.core.wechat.templates.WXEntryTemplate;
 import org.greenrobot.greendao.annotation.Entity;
 
 /**
- * 微信登录
- * Created by Administrator on 2017/9/16 0016.
+ * 生成 微信登录类（符合微信规定包名：com.imooc.lattedamo.wxapi.WXEntryTemplate）
+ *   @EntryGenerator :  表示latte-annotation  java librarys 下的 微信登录注解类
+ *    第一个参数：app包名
+ *    第二个参数： app微信登录逻辑类（ 微信登录类）
  */
 
 @SuppressWarnings("unused")

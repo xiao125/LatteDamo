@@ -12,7 +12,7 @@ import javax.lang.model.type.TypeMirror;
 import javax.lang.model.util.SimpleAnnotationValueVisitor7;
 
 /**
- * Created by Administrator on 2017/9/15 0015.
+ * 生成一个访问器（微信支付）
  */
 
 public class PayEntryVisitor extends SimpleAnnotationValueVisitor7<Void,Void> {

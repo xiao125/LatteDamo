@@ -22,12 +22,13 @@ public abstract class BaseWXActivity extends AppCompatActivity implements IWXAPI
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        //这个必须写在onCreate中
         //在WXEntryActivity中将接收到的intent及实现了IWXAPIEventHandler接口的对象传递给IWXAPI接口的handleIntent方法
         LatteWeChat.getInstance().getWXAPI().handleIntent(getIntent(),this);
 
     }
 
-    //WXEntryActivity 登录界面模式是sigtop，所以需要onNewIntent接收信息
+    //WXEntryActivity 登录界面Activity模式是sigtop，所以需要onNewIntent接收信息
     @Override
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);

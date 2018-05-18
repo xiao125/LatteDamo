@@ -22,12 +22,12 @@ import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.TypeElement;
 
 /**
+ *  仿ButterKnife注解框架，编译期生成代码
  *
- * Created by Administrator on 2017/9/15 0015.
  */
 
 @SuppressWarnings("unused")
-@AutoService(Processor.class)
+@AutoService(Processor.class) //生成相关代码，这类代码是不可见的。编译期间完成
 public final class LatteProcessor extends AbstractProcessor {
 
     @Override
@@ -41,6 +41,8 @@ public final class LatteProcessor extends AbstractProcessor {
         return types;
     }
 
+
+    //传入需要的 注解类
     private Set<Class<? extends Annotation>> getSupportedAnnotations(){
 
         final Set<Class<? extends Annotation>> annotations = new LinkedHashSet<>();
@@ -81,13 +83,14 @@ public final class LatteProcessor extends AbstractProcessor {
         }
     }
 
-
+   //生成微信登录
     private void generateEntryCode(RoundEnvironment env){
         final EntryVisitor entryVisitor = new EntryVisitor(processingEnv.getFiler());
         scan(env,EntryGenerator.class,entryVisitor);
     }
 
 
+    //生成微信支付
     private void generatePayEntryCode(RoundEnvironment env){
 
         final PayEntryVisitor payEntryVisitor = new PayEntryVisitor(processingEnv.getFiler());
@@ -95,6 +98,8 @@ public final class LatteProcessor extends AbstractProcessor {
 
     }
 
+
+    //生成微信广播
     private void generateAppRegisterCode(RoundEnvironment env) {
         final AppRegisterVisitor appRegisterVisitor =
                 new AppRegisterVisitor(processingEnv.getFiler());

@@ -43,6 +43,7 @@ public class LatteWeChat {
     }
 
 
+    //获取WXAPI
     public final IWXAPI getWXAPI(){
 
         return WXAPI;
@@ -58,6 +59,7 @@ public class LatteWeChat {
         return mSignInCallback;
     }
 
+    //发送微信登录请求（微信登录成功后回调个Activity： wxapi.WXEntryActivity）
     public final void signIn(){
 
         final SendAuth.Req  req = new SendAuth.Req();
